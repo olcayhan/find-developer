@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
+import "../styles/globals.scss";
+import { ReduxProvider } from "../redux/provider";
+import ThemeRegistry from "../components/common/ThemeRegistry/ThemeRegistry";
+import Layout from "../components/common/Layout/Layout";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const roboto = Roboto({
+  weight: ['300', '400', '500', '700'],
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-roboto',
 });
 
 export const metadata: Metadata = {
   title: "Find Developer",
-  description: "Find Developer is a platform that connects developers with job opportunities. We help developers find their dream jobs and help companies find the best talent.",
+  description: "Find your teammate with finddeveloper.net",
 };
 
 export default function RootLayout({
@@ -24,10 +25,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={roboto.className}>
+        <ReduxProvider>
+          <ThemeRegistry>
+            <Layout>
+              {children}
+            </Layout>
+          </ThemeRegistry>
+        </ReduxProvider>
       </body>
     </html>
   );
