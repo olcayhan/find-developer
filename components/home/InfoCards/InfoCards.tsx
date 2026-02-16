@@ -16,7 +16,7 @@ export default function InfoCards() {
                         <Card sx={{ position: 'relative', borderRadius: 4, overflow: 'hidden', boxShadow: 3 }}>
                             <CardMedia
                                 component="img"
-                                height="250"
+                                height="325"
                                 image="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" // Placeholder
                                 alt="İş Ara"
                                 sx={{ filter: 'brightness(0.7)' }}
@@ -28,15 +28,20 @@ export default function InfoCards() {
                                     left: 0,
                                     width: '100%',
                                     p: 3,
-                                    backgroundImage: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
                                     display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'end'
+                                    justifyContent: 'space-evenly',
+                                    alignItems: 'center'
                                 }}
                             >
-                                <Typography variant="h5" color="white" fontWeight="bold">
+                                <Typography variant="h5" color="white" sx={{ flex: 1, textAlign: 'center', fontSize: 18 }}>
                                     İş Ara
                                 </Typography>
+                                <Box sx={{ width: '2px', height: 24, bgcolor: 'rgba(255, 255, 255, 1)' }} />
+                                <Typography variant="h5" color="white" sx={{ flex: 1, textAlign: 'center', fontSize: 18 }}>
+                                    Profilini Oluştur
+                                </Typography>
+
                             </Box>
                         </Card>
                     </Grid>
@@ -44,8 +49,8 @@ export default function InfoCards() {
                         <Card sx={{ position: 'relative', borderRadius: 4, overflow: 'hidden', boxShadow: 3 }}>
                             <CardMedia
                                 component="img"
-                                height="250"
-                                image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80" // Placeholder
+                                height="325"
+                                image="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80"
                                 alt="Profilini Oluştur"
                                 sx={{ filter: 'brightness(0.7)' }}
                             />
@@ -56,14 +61,14 @@ export default function InfoCards() {
                                     left: 0,
                                     width: '100%',
                                     p: 3,
-                                    backgroundImage: 'linear-gradient(to top, rgba(0,0,0,0.8), transparent)',
+                                    backgroundColor: 'rgba(0, 0, 0, 0.5)',
                                     display: 'flex',
-                                    justifyContent: 'space-between',
-                                    alignItems: 'end'
+                                    justifyContent: 'center',
+                                    alignItems: 'center'
                                 }}
                             >
-                                <Typography variant="h5" color="white" fontWeight="bold">
-                                    Profilini Oluştur
+                                <Typography variant="h5" color="white" fontSize={18}>
+                                    İş Veren Çözümleri
                                 </Typography>
                             </Box>
                         </Card>
