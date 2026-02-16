@@ -12,7 +12,7 @@ export default function PopularSearches() {
     const popularSearches = ['UX designer', 'UI designer', 'Front-end developer', 'Back-end developer', 'iOS developer', 'Android Developer', 'React Native'];
 
     return (
-        <Box sx={{ bgcolor: '#f5f5f5', py: 2, width: '100%', borderBottom: '1px solid #e0e0e0' }}>
+        <Box sx={{ position: 'relative', bgcolor: '#f5f5f5', py: 2, width: '100%', borderBottom: '1px solid #e0e0e0' }}>
             <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, gap: { xs: 1, md: 2 } }}>
                 <Typography variant="body1" sx={{ color: 'text.secondary', whiteSpace: 'nowrap', mb: { xs: 1, md: 0 } }}>
                     Popüler aramalar
@@ -22,11 +22,8 @@ export default function PopularSearches() {
                         display: 'flex',
                         gap: 1,
                         overflowX: 'auto',
-                        pb: 0.5,
                         width: '100%',
                         '::-webkit-scrollbar': { display: 'none' },
-                        msOverflowStyle: 'none',  /* IE and Edge */
-                        scrollbarWidth: 'none',  /* Firefox */
                     }}
                 >
                     {popularSearches.map((term) => (
@@ -36,17 +33,30 @@ export default function PopularSearches() {
                             clickable
                             onClick={() => router.push(`/search?q=${term}`)}
                             sx={{
-                                bgcolor: '#e0e0e0',
-                                color: 'text.primary',
-                                borderRadius: '16px',
-                                border: 'none',
+                                bgcolor: '#e9e9e9',
+                                color: 'text.secondary',
+                                borderRadius: '28px',
+                                border: '1px solid #bfbfbfb2',
                                 '&:hover': { bgcolor: '#d5d5d5' },
-                                flexShrink: 0 // Prevent shrinking
+                                px: 4,
+                                py: 3,
+                                whiteSpace: 'nowrap'
                             }}
                         />
                     ))}
                 </Box>
             </Container>
+            <Box
+                sx={{
+                    right: 0,
+                    top: 0,
+                    position: 'absolute',
+                    height: '100%',
+                    width: '150px',
+                    margin: '0 0 0 28px',
+                    backgroundImage: 'linear-gradient(to right, rgba(238, 238, 238, 0), #f7f8fa 25%)',
+                }}
+            />
         </Box>
     );
 }
