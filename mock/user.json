@@ -1,0 +1,75 @@
+{
+    "name": "Nesil AKSOY",
+    "title": "UX Designer",
+    "location": "Türkiye, İstanbul, Sarıyer",
+    "email": "eray_karakullukcu@neyasis.com",
+    "phone": "+90 555 66 44",
+    "website": "https://neyasis.com",
+    "social": {
+        "linkedin": "#",
+        "github": "#",
+        "twitter": "#"
+    },
+    "documents": [
+        {
+            "name": "eraycv.docx",
+            "type": "docx"
+        },
+        {
+            "name": "eraycv-eng.pdf",
+            "type": "pdf"
+        }
+    ],
+    "professionalView": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    "experience": [
+        {
+            "title": "Founder",
+            "company": "Neyasis Technology",
+            "date": "February 2014 - Present",
+            "duration": "6 Years, 10 Months",
+            "location": "Ümraniye - İstanbul / Turkey",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit..."
+        },
+        {
+            "title": "Software Development Manager",
+            "company": "IBM",
+            "date": "July 2011 - January 2014",
+            "duration": "2 Years, 6 Months",
+            "location": "Armonk - New York / ABD",
+            "description": "Lorem ipsum dolor sit amet..."
+        }
+    ],
+    "education": [
+        {
+            "school": "Bahçeşehir Üniversitesi",
+            "degree": "Master Degree",
+            "field": "Computer & Information Sciences",
+            "date": "2015-2019"
+        },
+        {
+            "school": "Boğaziçi Üniversitesi",
+            "degree": "Bachelor's Degree",
+            "field": "Political Science and International Relations",
+            "date": "2010-2015"
+        }
+    ],
+    "skills": [
+        {
+            "name": "C#.Net",
+            "years": 10
+        },
+        {
+            "name": "React",
+            "years": 3
+        },
+        {
+            "name": "Swift",
+            "years": 5
+        }
+    ],
+    "interests": [
+        "Boating / Sailing",
+        "Windsurfing",
+        "Snowboarding"
+    ]
+}
