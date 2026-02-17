@@ -27,12 +27,14 @@ import SearchIcon from '@mui/icons-material/Search';
 export default function Header() {
     const t = useTranslations('Hero');
     const tProfile = useTranslations('Profile');
+    const tHeader = useTranslations('Header');
     const [mobileOpen, setMobileOpen] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const pathname = usePathname();
     const isHome = pathname === '/';
     const isProfile = pathname.includes('/profile');
+    const isSearch = pathname.includes('/search');
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -60,37 +62,102 @@ export default function Header() {
         </Box>
     );
 
-
-    if (isProfile) {
+    if (isProfile || isSearch) {
         return (
             <Box sx={{ flexDirection: 'column', width: '100%' }}>
                 <Box sx={{ bgcolor: '#4361ee', position: 'relative', height: '80px', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
-                    <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
-                            <Box
-                                component="img"
-                                src="/assets/images/logo.webp"
-                                alt="Logo"
-                                width={190}
-                                height={26}
-                            />
-                        </Link>
+                    <Container sx={{ px: { xs: 2, md: '150px !important' }, maxWidth: 'none !important', position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                            <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                                <Box
+                                    component="img"
+                                    src="/assets/images/logo.webp"
+                                    alt="Logo"
+                                    width={190}
+                                    height={26}
+                                />
+                            </Link>
+
+                            {isSearch && (
+                                <Button
+                                    variant="outlined"
+                                    sx={{
+                                        color: 'white',
+                                        borderColor: 'rgba(255,255,255,0.8)',
+                                        borderRadius: '20px',
+                                        textTransform: 'none',
+                                        height: 32,
+                                        px: 3,
+                                        '&:hover': {
+                                            borderColor: 'white',
+                                            bgcolor: 'rgba(255,255,255,0.1)'
+                                        }
+                                    }}
+                                >
+                                    {tHeader('employerLogin')}
+                                </Button>
+                            )}
+                        </Box>
 
                         <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                            <Box sx={{ textAlign: 'right', color: 'white' }}>
-                                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 0.5 }}>
-                                    <Typography variant="body2" fontWeight="bold">Eray Karakullukçu</Typography>
-                                    <KeyboardArrowDownIcon fontSize="small" />
+                            {isProfile ? (
+                                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                                    <Box sx={{ textAlign: 'right', color: 'white' }}>
+                                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 0.5 }}>
+                                            <Typography variant="body2" fontWeight="bold">Eray Karakullukçu</Typography>
+                                            <KeyboardArrowDownIcon fontSize="small" />
+                                        </Box>
+                                        <Typography variant="caption" sx={{ opacity: 0.8 }}>{tProfile('founderAt')}</Typography>
+                                    </Box>
+                                    <Avatar src="https://i.pravatar.cc/150?u=5" sx={{ width: 48, height: 48, border: '2px solid white' }} />
                                 </Box>
-                                <Typography variant="caption" sx={{ opacity: 0.8 }}>{tProfile('founderAt')}</Typography>
-                            </Box>
-                            <Avatar src="https://i.pravatar.cc/150?u=5" sx={{ width: 48, height: 48, border: '2px solid white' }} />
+                            ) : (
+                                <>
+                                    <Button
+                                        variant="outlined"
+                                        sx={{
+                                            color: 'white',
+                                            borderColor: 'rgba(255,255,255,0.8)',
+                                            borderRadius: '20px',
+                                            textTransform: 'none',
+                                            height: 32,
+                                            px: 3,
+                                            '&:hover': {
+                                                borderColor: 'white',
+                                                bgcolor: 'rgba(255,255,255,0.1)'
+                                            }
+                                        }}
+                                    >
+                                        {tHeader('uploadCV')}
+                                    </Button>
+                                    <Button
+                                        component={Link}
+                                        href="/login"
+                                        variant="outlined"
+                                        sx={{
+                                            color: 'white',
+                                            borderColor: 'rgba(255,255,255,0.8)',
+                                            borderRadius: '20px',
+                                            textTransform: 'none',
+                                            height: 32,
+                                            px: 3,
+                                            '&:hover': {
+                                                borderColor: 'white',
+                                                bgcolor: 'rgba(255,255,255,0.1)'
+                                            }
+                                        }}
+                                    >
+                                        {tHeader('login')}
+                                    </Button>
+                                </>
+                            )}
                         </Box>
                     </Container>
                 </Box>
 
                 <Box sx={{ bgcolor: '#f5f7fa', py: 2, borderBottom: '1px solid #e0e0e0' }}>
-                    <Container maxWidth="lg" sx={{ display: 'flex', gap: 2 }}>
+                    <Container sx={{ px: { xs: 2, md: '150px !important' }, maxWidth: 'none !important', display: 'flex', gap: 2 }}>
                         <Paper
                             component="form"
                             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', flexGrow: 1, borderRadius: '30px', border: '1px solid #4361ee', boxShadow: 'none', height: 50 }}

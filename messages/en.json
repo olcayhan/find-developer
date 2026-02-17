@@ -44,5 +44,17 @@
         "viewAll": "View All",
         "founderAt": "Founder at findtalent",
         "find": "find"
+    },
+    "Header": {
+        "employerLogin": "Employer Login",
+        "uploadCV": "Upload CV",
+        "login": "Login"
+    },
+    "Search": {
+        "filter": "Filter",
+        "recentSearches": "Recent Searches",
+        "notifyMe": "Notify Me",
+        "didYouMean": "Did you mean?",
+        "jobsFound": "jobs found"
     }
 }

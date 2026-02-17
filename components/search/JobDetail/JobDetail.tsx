@@ -3,7 +3,6 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
@@ -12,6 +11,8 @@ import ShareIcon from '@mui/icons-material/Share';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Divider from '@mui/material/Divider';
+import DescriptionOutlinedIcon from '@mui/icons-material/DescriptionOutlined';
+import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 
 interface Job {
     id: string;
@@ -44,9 +45,10 @@ function CustomTabPanel(props: TabPanelProps) {
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
             {...other}
+            style={{ height: '100%' }}
         >
             {value === index && (
-                <Box sx={{ py: 3 }}>
+                <Box sx={{ py: 3, height: '100%', overflowY: 'auto', pr: 1 }}>
                     {children}
                 </Box>
             )}
@@ -70,71 +72,168 @@ export default function JobDetail({ job }: JobDetailProps) {
     }
 
     return (
-        <Card sx={{ height: '100%', boxShadow: 3, borderRadius: 2 }}>
-            <CardContent>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, height: '100%' }}>
+            {/* Top Header Card */}
+            <Card sx={{ p: 3, borderRadius: 2, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid #eee' }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
                     <Box>
-                        <Typography variant="h5" component="div" fontWeight="bold" color="primary">
+                        <Typography variant="h6" component="div" fontWeight="bold" sx={{ color: '#4361ee', mb: 0.5 }}>
                             {job.title}
                         </Typography>
-                        <Typography variant="subtitle1" color="text.secondary">
+                        <Typography variant="body1" color="text.secondary" fontWeight="500">
                             {job.company} - {job.location}
                         </Typography>
                     </Box>
-                    <Box>
-                        <Button variant="outlined" sx={{ borderRadius: '20px', mr: 1, textTransform: 'none' }}>
+                    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 1 }}>
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                borderRadius: '25px',
+                                textTransform: 'none',
+                                borderColor: '#4361ee',
+                                color: '#4361ee',
+                                px: 4,
+                                py: 0.5,
+                                fontSize: '1rem',
+                                '&:hover': {
+                                    borderColor: '#4361ee',
+                                    bgcolor: 'rgba(67, 97, 238, 0.04)'
+                                }
+                            }}
+                        >
                             Başvur
                         </Button>
-                        <IconButton size="small"><FavoriteBorderIcon /></IconButton>
-                        <IconButton size="small"><ShareIcon /></IconButton>
+                        <Box sx={{ display: 'flex', gap: 1 }}>
+                            <IconButton size="small" sx={{ color: '#4361ee' }}><FavoriteBorderIcon /></IconButton>
+                            <IconButton size="small" sx={{ color: '#4361ee' }}><ShareIcon /></IconButton>
+                        </Box>
                     </Box>
                 </Box>
+            </Card>
 
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                    <Tabs value={value} onChange={handleChange} aria-label="job detail tabs" variant="scrollable" scrollButtons="auto">
+            {/* Main Content Area */}
+            {/* Tabs are outside the card in the design, acting as headers for the content card */}
+            <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+                <Box sx={{ borderBottom: 1, borderColor: 'divider', mb: 0 }}>
+                    <Tabs
+                        value={value}
+                        onChange={handleChange}
+                        aria-label="job detail tabs"
+                        sx={{
+                            '& .MuiTab-root': {
+                                textTransform: 'none',
+                                fontWeight: 600,
+                                fontSize: '1rem',
+                                color: 'text.secondary',
+                                '&.Mui-selected': { color: '#4361ee' }
+                            },
+                            '& .MuiTabs-indicator': {
+                                backgroundColor: '#4361ee',
+                                height: 3
+                            }
+                        }}
+                    >
                         <Tab label="Detay" />
                         <Tab label="Aday Kriterleri" />
                         <Tab label="İşe Alım Süreci" />
                     </Tabs>
                 </Box>
 
-                <CustomTabPanel value={value} index={0}>
-                    <Typography variant="body2" paragraph>
-                        {job.description}
-                    </Typography>
+                <Card sx={{
+                    p: 4,
+                    pt: 2,
+                    borderRadius: '0 0 12px 12px',
+                    border: '1px solid #eee',
+                    borderTop: 'none',
+                    boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                    flex: 1,
+                    minHeight: 400
+                }}>
+                    <CustomTabPanel value={value} index={0}>
+                        {/* Job Description */}
+                        <Typography variant="body2" color="text.secondary" paragraph sx={{ mb: 3 }}>
+                            Promer Müşavirlik Mühendislik A.Ş Bilgi Teknolojileri Direktörlüğünün Yazılım Geliştirme Biriminde görev alacak Software Developer(.Net) arayışımız vardır.
+                        </Typography>
 
-                    <Typography variant="subtitle2" fontWeight="bold" gutterBottom sx={{ mt: 2 }}>
-                        Genel Nitelikler
-                    </Typography>
-                    <Box component="ul" sx={{ pl: 2, m: 0 }}>
-                        {job.qualifications?.map((q, i) => (
-                            <li key={i}><Typography variant="body2">{q}</Typography></li>
-                        )) || <li>Loading...</li>}
+                        <Typography variant="subtitle1" fontWeight="bold" sx={{ color: '#556987', mb: 2 }}>
+                            İş Tanımı
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" paragraph sx={{ mb: 4, whiteSpace: 'pre-line' }}>
+                            {job.description}
+                        </Typography>
+
+                        <Typography variant="subtitle1" fontWeight="bold" sx={{ color: '#556987', mb: 2 }}>
+                            Genel Nitelikler
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" paragraph>
+                            Üniversitelerin Bilgisayar Mühendisliği veya ilgili mühendislik bölümlerinden mezun,
+                        </Typography>
+                        <Box component="ul" sx={{ pl: 2, m: 0, color: 'text.secondary' }}>
+                            {job.qualifications?.map((q, i) => (
+                                <li key={i}><Typography variant="body2" sx={{ mb: 0.5 }}>{q}</Typography></li>
+                            )) || <li>Detaylar yükleniyor...</li>}
+                        </Box>
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={1}>
+                        <Typography variant="body2">Aday kriterleri içeriği...</Typography>
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={2}>
+                        <Typography variant="body2">İşe alım süreci içeriği...</Typography>
+                    </CustomTabPanel>
+                </Card>
+            </Box>
+
+            {/* Bottom Info Cards */}
+            <Box sx={{ display: 'flex', gap: 3 }}>
+                {/* "Am I suitable?" Card */}
+                <Card sx={{ flex: 1, p: 3, borderRadius: 2, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid #eee', position: 'relative', overflow: 'hidden' }}>
+                    <Box sx={{ position: 'relative', zIndex: 1 }}>
+                        <Typography variant="h6" fontWeight="bold" sx={{ color: '#4361ee', mb: 1 }}>
+                            Bu İlana Uygun muyum?
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
+                            Bu ilanla eşleşmek için ne yapmalıyım?
+                        </Typography>
+                        <Typography variant="body2" sx={{ textDecoration: 'underline', cursor: 'pointer', fontWeight: 600, color: '#556987' }}>
+                            CV'nizi Güncelleyin
+                        </Typography>
                     </Box>
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={1}>
-                    <Typography variant="body2">Aday kriterleri içeriği...</Typography>
-                </CustomTabPanel>
-                <CustomTabPanel value={value} index={2}>
-                    <Typography variant="body2">İşe alım süreci içeriği...</Typography>
-                </CustomTabPanel>
+                    <DescriptionOutlinedIcon sx={{
+                        position: 'absolute',
+                        right: -10,
+                        bottom: -10,
+                        fontSize: 100,
+                        color: '#eaecf0',
+                        transform: 'rotate(-15deg)'
+                    }} />
+                </Card>
 
-                <Divider sx={{ my: 3 }} />
-
-                <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
-                    <Box sx={{ flex: 1, minWidth: '200px', p: 2, bgcolor: '#f9f9f9', borderRadius: 2 }}>
-                        <Typography variant="subtitle2" fontWeight="bold" color="primary">Bu İlana Uygun muyum?</Typography>
-                        <Typography variant="caption" display="block" color="text.secondary">Bu ilanla eşleşmek için ne yapmalıyım?</Typography>
-                        <Typography variant="caption" sx={{ textDecoration: 'underline', cursor: 'pointer', mt: 1, display: 'block' }}>CV&apos;nizi Güncelleyin</Typography>
+                {/* Salary Card */}
+                <Card sx={{ flex: 1, p: 3, borderRadius: 2, boxShadow: '0 4px 20px rgba(0,0,0,0.05)', border: '1px solid #eee', position: 'relative', overflow: 'hidden' }}>
+                    <Box sx={{ position: 'relative', zIndex: 1 }}>
+                        <Typography variant="h6" fontWeight="bold" sx={{ color: '#4361ee', mb: 1 }}>
+                            Tahmini Maaş Aralığı
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary" sx={{ mb: 0 }}>
+                            {job.salary || '8.000€ - 12.000,00€'}
+                        </Typography>
+                        <Typography variant="caption" color="text.secondary">
+                            /yıl
+                        </Typography>
+                        <Typography variant="caption" display="block" color="text.secondary" sx={{ mt: 0.5 }}>
+                            .net Developer
+                        </Typography>
                     </Box>
-                    <Box sx={{ flex: 1, minWidth: '200px', p: 2, bgcolor: '#f9f9f9', borderRadius: 2 }}>
-                        <Typography variant="subtitle2" fontWeight="bold" color="primary">Tahmini Maaş Aralığı</Typography>
-                        <Typography variant="body2" fontWeight="bold">{job.salary || 'Belirtilmemiş'}</Typography>
-                        <Typography variant="caption" color="text.secondary">/yıl</Typography>
-                    </Box>
-                </Box>
-
-            </CardContent>
-        </Card>
+                    <MonetizationOnOutlinedIcon sx={{
+                        position: 'absolute',
+                        right: -10,
+                        bottom: -10,
+                        fontSize: 100,
+                        color: '#eaecf0',
+                        transform: 'rotate(-15deg)'
+                    }} />
+                </Card>
+            </Box>
+        </Box>
     );
 }

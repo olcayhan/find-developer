@@ -8,6 +8,7 @@ import Grid from '@mui/material/Grid';
 import FilterPanel from '../../../components/search/FilterPanel/FilterPanel';
 import JobList from '../../../components/search/JobList/JobList';
 import JobDetail from '../../../components/search/JobDetail/JobDetail';
+import JobsForYou from '@/components/home/JobsForYou/JobsForYou';
 
 // Mock data import workaround
 const allJobs = [
@@ -94,36 +95,42 @@ export default function SearchPage() {
         );
     }, [query]);
 
-    // Select first job by default if list changes
+    const isNoResults = filteredJobs.length === 0 && query !== '';
+    const displayJobs = isNoResults ? allJobs : filteredJobs;
+
     useEffect(() => {
-        if (filteredJobs.length > 0) {
-            // Only select if we don't have a selection, OR if the current selection is not in the new list
-            const isSelectedInList = filteredJobs.find(j => j.id === selectedJobId);
+        if (displayJobs.length > 0) {
+            const isSelectedInList = displayJobs.find(j => j.id === selectedJobId);
 
             if (!selectedJobId || !isSelectedInList) {
-                setSelectedJobId(filteredJobs[0].id);
+                setSelectedJobId(displayJobs[0].id);
             }
         } else {
-            // If filteredJobs becomes empty, clear the selection
             setSelectedJobId(null);
         }
-    }, [filteredJobs, selectedJobId]);
+    }, [displayJobs, selectedJobId]);
 
     const selectedJob = allJobs.find(job => job.id === selectedJobId) || null;
 
     return (
-        <Box sx={{ py: 4, bgcolor: '#f5f5f5', minHeight: 'calc(100vh - 64px)' }}>
-            <Container maxWidth="xl">
+        <Box sx={{ py: 4, bgcolor: '#ffffff', minHeight: 'calc(100vh - 64px)', position: 'relative' }}>
+            <Container sx={{ px: { xs: 2, md: '150px !important' }, maxWidth: 'none !important', position: 'relative', zIndex: 1 }}>
                 <FilterPanel jobCount={filteredJobs.length} query={query} />
 
                 <Grid container spacing={3}>
                     <Grid size={{ xs: 12, md: 4 }}>
-                        <JobList jobs={filteredJobs} selectedJobId={selectedJobId} onSelectJob={setSelectedJobId} />
+                        <JobList
+                            jobs={displayJobs}
+                            selectedJobId={selectedJobId}
+                            onSelectJob={setSelectedJobId}
+                            noResults={isNoResults}
+                        />
                     </Grid>
                     <Grid size={{ xs: 12, md: 8 }} sx={{ display: { xs: 'none', md: 'block' } }}>
                         <JobDetail job={selectedJob} />
                     </Grid>
                 </Grid>
+                <JobsForYou />
             </Container>
         </Box>
     );

@@ -44,5 +44,17 @@
         "viewAll": "Tümünü Gör",
         "founderAt": "findtalent'de Kurucu",
         "find": "find"
+    },
+    "Header": {
+        "employerLogin": "İşveren Girişi",
+        "uploadCV": "CV Yükle",
+        "login": "Giriş Yap"
+    },
+    "Search": {
+        "filter": "Filtrele",
+        "recentSearches": "Son Aramalar",
+        "notifyMe": "Beni Bilgilendir",
+        "didYouMean": "Bunu mu demek istediniz?",
+        "jobsFound": "iş ilanı bulundu"
     }
 }
