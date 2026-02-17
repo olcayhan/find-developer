@@ -6,20 +6,20 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Chip from '@mui/material/Chip';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '../../../navigation';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 
 export default function HeroSection() {
+    const t = useTranslations('Hero');
     const router = useRouter();
     const [keyword, setKeyword] = React.useState('');
 
     const handleSearch = () => {
         router.push(`/search?q=${keyword}`);
     };
-
 
     return (
         <Box
@@ -81,7 +81,7 @@ export default function HeroSection() {
                     >
                         <TextField
                             fullWidth
-                            placeholder="İş Ara | Şirket, Anahtar Kelime"
+                            placeholder={t('placeholder')}
                             value={keyword}
                             onChange={(e) => setKeyword(e.target.value)}
                             variant="standard"
@@ -136,7 +136,7 @@ export default function HeroSection() {
                             }}
                             onClick={() => router.push('/search')}
                         >
-                            Detaylı Arama
+                            {t('detailedSearch')}
                         </Typography>
                     </Box>
                 </Box>

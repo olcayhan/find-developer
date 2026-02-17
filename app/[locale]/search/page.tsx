@@ -5,9 +5,9 @@ import { useSearchParams } from 'next/navigation';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
-import FilterPanel from '../../components/search/FilterPanel/FilterPanel';
-import JobList from '../../components/search/JobList/JobList';
-import JobDetail from '../../components/search/JobDetail/JobDetail';
+import FilterPanel from '../../../components/search/FilterPanel/FilterPanel';
+import JobList from '../../../components/search/JobList/JobList';
+import JobDetail from '../../../components/search/JobDetail/JobDetail';
 
 // Mock data import workaround
 const allJobs = [

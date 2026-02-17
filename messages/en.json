@@ -1,0 +1,35 @@
+{
+    "Hero": {
+        "placeholder": "Search Job | Company, Keyword",
+        "detailedSearch": "Detailed Search"
+    },
+    "PopularSearches": {
+        "title": "Popular searches"
+    },
+    "FeaturedJobs": {
+        "title": "Featured Jobs"
+    },
+    "InfoCards": {
+        "jobSearch": "Find a Job",
+        "createProfile": "Create Profile",
+        "employerSolutions": "Employer Solutions"
+    },
+    "JobsForYou": {
+        "title": "Jobs for you",
+        "categories": "Popular Categories",
+        "companies": "Popular Company Jobs",
+        "locations": "Popular Locations",
+        "titles": "Popular Titles"
+    },
+    "Footer": {
+        "copyright": "© 2026 Finddeveloper.net",
+        "privacyCenter": "Privacy Center",
+        "cookies": "Cookies",
+        "privacy": "Privacy",
+        "terms": "Terms",
+        "workWithUs": "Work at Finddeveloper",
+        "aboutUs": "About Us",
+        "helpCenter": "Help Center",
+        "legalText": "Finddeveloper.net Inc. operates as a Private Employment Agency with license number 170 granted by the Turkish Employment Agency on 17.02.2024, valid between 31/08/2024-30/08/2027. No fees or benefits shall be demanded from job seekers pursuant to Law No. 4904."
+    }
+}

@@ -7,13 +7,18 @@ import Typography from '@mui/material/Typography';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
+import { Link, useRouter, usePathname } from '../../../navigation';
 
 export default function Footer() {
-    const [language, setLanguage] = React.useState('tr');
+    const t = useTranslations('Footer');
+    const locale = useLocale();
+    const router = useRouter();
+    const pathname = usePathname();
 
     const handleChange = (event: any) => {
-        setLanguage(event.target.value);
+        const nextLocale = event.target.value;
+        router.replace(pathname, { locale: nextLocale });
     };
 
     return (
@@ -31,21 +36,21 @@ export default function Footer() {
                 <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, justifyContent: 'space-between', alignItems: 'center', mb: 4, gap: 2 }}>
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' } }}>
                         <Typography variant="body2" color="inherit">
-                            © 2026 Finddeveloper.net
+                            {t('copyright')}
                         </Typography>
-                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>Gizlilik Merkezi</Link>
-                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>Çerezler</Link>
-                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>Gizlilik</Link>
-                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>Şartlar</Link>
+                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>{t('privacyCenter')}</Link>
+                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>{t('cookies')}</Link>
+                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>{t('privacy')}</Link>
+                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>{t('terms')}</Link>
                     </Box>
 
                     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 3, alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-end' } }}>
-                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>Finddeveloper'da Çalışmak</Link>
-                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>Hakkımızda</Link>
-                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>Yardım Merkezi</Link>
+                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>{t('workWithUs')}</Link>
+                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>{t('aboutUs')}</Link>
+                        <Link href="#" style={{ textDecoration: 'none', color: 'inherit', fontSize: '14px' }}>{t('helpCenter')}</Link>
                         <FormControl variant="standard" sx={{ m: 1, minWidth: 80 }}>
                             <Select
-                                value={language}
+                                value={locale}
                                 onChange={handleChange}
                                 disableUnderline
                                 sx={{
@@ -88,8 +93,7 @@ export default function Footer() {
                         <img src="http://www.babuda.com.tr/wp-content/uploads/2018/04/iskur-ozel-istihdam-burosu-300x300.png" alt="ISKUR" style={{ maxWidth: '100%', maxHeight: '100%' }} />
                     </Box>
                     <Typography variant="caption" sx={{ color: '#ccc', textAlign: { xs: 'center', md: 'left' }, lineHeight: 1.6 }}>
-                        Finddeveloper.net A.Ş. Özel İstihdam Bürosu Olarak 31/08/2018-30/08/2021 tarihleri arasında faaliyette bulunmak üzere, Türkiye İş Kurumu tarafından 16.07.2018 tarih ve 26124 sayılı karar uyarınca 170 nolu belge ile faaliyet göstermektedir. 4904 sayılı kanun uyarınca iş arayanlardan ücret alınmayacak ve menfaat temin edilmeyecektir. Şikayetleriniz için aşağıdaki telefon numaralarına başvurabilirsiniz. Diğer iller için tıklayın. Türkiye İş Kurumu İstanbul İl Müdürlüğü: 0212 555 55 55 Türkiye iş Kurumu İstanbul Çalışma ve İş Kurumu Ümraniye Hizmet Merkezi :
-                        0216 523 90 26
+                        {t('legalText')}
                     </Typography>
                 </Box>
             </Container>

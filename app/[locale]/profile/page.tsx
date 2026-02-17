@@ -6,11 +6,11 @@ import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import ProfileSidebar from '../../components/profile/ProfileSidebar/ProfileSidebar';
-import ExperienceSection from '../../components/profile/ExperienceSection/ExperienceSection';
-import SkillsSection from '../../components/profile/SkillsSection/SkillsSection';
-import EducationSection from '../../components/profile/EducationSection/EducationSection';
-import InterestsSection from '../../components/profile/InterestsSection/InterestsSection';
+import ProfileSidebar from '../../../components/profile/ProfileSidebar/ProfileSidebar';
+import ExperienceSection from '../../../components/profile/ExperienceSection/ExperienceSection';
+import SkillsSection from '../../../components/profile/SkillsSection/SkillsSection';
+import EducationSection from '../../../components/profile/EducationSection/EducationSection';
+import InterestsSection from '../../../components/profile/InterestsSection/InterestsSection';
 
 // Mock data
 // In a real app we would fetch this or use Redux

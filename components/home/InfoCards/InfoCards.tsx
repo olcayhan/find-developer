@@ -6,8 +6,10 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { useTranslations } from 'next-intl';
 
 export default function InfoCards() {
+    const t = useTranslations('InfoCards');
     return (
         <Box sx={{ py: { xs: 4, sm: 6 } }}>
             <Container maxWidth="lg">
@@ -35,11 +37,11 @@ export default function InfoCards() {
                                 }}
                             >
                                 <Typography variant="h5" color="white" sx={{ flex: 1, textAlign: 'center', fontSize: 18 }}>
-                                    İş Ara
+                                    {t('jobSearch')}
                                 </Typography>
                                 <Box sx={{ width: '2px', height: 24, bgcolor: 'rgba(255, 255, 255, 1)' }} />
                                 <Typography variant="h5" color="white" sx={{ flex: 1, textAlign: 'center', fontSize: 18 }}>
-                                    Profilini Oluştur
+                                    {t('createProfile')}
                                 </Typography>
 
                             </Box>
@@ -68,7 +70,7 @@ export default function InfoCards() {
                                 }}
                             >
                                 <Typography variant="h5" color="white" fontSize={18}>
-                                    İş Veren Çözümleri
+                                    {t('employerSolutions')}
                                 </Typography>
                             </Box>
                         </Card>

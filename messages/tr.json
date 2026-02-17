@@ -1,0 +1,35 @@
+{
+    "Hero": {
+        "placeholder": "İş Ara | Şirket, Anahtar Kelime",
+        "detailedSearch": "Detaylı Arama"
+    },
+    "PopularSearches": {
+        "title": "Popüler aramalar"
+    },
+    "FeaturedJobs": {
+        "title": "Öne çıkan iş ilanları"
+    },
+    "InfoCards": {
+        "jobSearch": "İş Ara",
+        "createProfile": "Profilini Oluştur",
+        "employerSolutions": "İş Veren Çözümleri"
+    },
+    "JobsForYou": {
+        "title": "Sizin için iş ilanları",
+        "categories": "Popüler Kategoriler",
+        "companies": "Popüler Şirket İlanları",
+        "locations": "Popüler Lokasyonlar",
+        "titles": "Popüler Başlıklar"
+    },
+    "Footer": {
+        "copyright": "© 2026 Finddeveloper.net",
+        "privacyCenter": "Gizlilik Merkezi",
+        "cookies": "Çerezler",
+        "privacy": "Gizlilik",
+        "terms": "Şartlar",
+        "workWithUs": "Finddeveloper'da Çalışmak",
+        "aboutUs": "Hakkımızda",
+        "helpCenter": "Yardım Merkezi",
+        "legalText": "Finddeveloper.net A.Ş. Özel İstihdam Bürosu Olarak 31/08/2018-30/08/2021 tarihleri arasında faaliyette bulunmak üzere, Türkiye İş Kurumu tarafından 16.07.2018 tarih ve 26124 sayılı karar uyarınca 170 nolu belge ile faaliyet göstermektedir. 4904 sayılı kanun uyarınca iş arayanlardan ücret alınmayacak ve menfaat temin edilmeyecektir. Şikayetleriniz için aşağıdaki telefon numaralarına başvurabilirsiniz. Diğer iller için tıklayın. Türkiye İş Kurumu İstanbul İl Müdürlüğü: 0212 555 55 55 Türkiye iş Kurumu İstanbul Çalışma ve İş Kurumu Ümraniye Hizmet Merkezi : 0216 523 90 26"
+    }
+}

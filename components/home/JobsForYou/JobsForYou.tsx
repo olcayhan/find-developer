@@ -6,6 +6,8 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Link from 'next/link';
 
+import { useTranslations } from 'next-intl';
+
 const jobCategories = [
     'Yazılım Geliştirme',
     'Mobil Uygulama Geliştirme',
@@ -45,6 +47,8 @@ const popularCompanies = [
 ];
 
 export default function JobsForYou() {
+    const t = useTranslations('JobsForYou');
+
     return (
         <Box sx={{ py: 6, position: 'relative', overflow: 'hidden' }}>
             <Box
@@ -76,14 +80,14 @@ export default function JobsForYou() {
 
             <Container maxWidth="lg">
                 <Typography variant="h5" color="text.secondary" sx={{ mb: 4, fontWeight: 'bold', fontSize: '24px' }}>
-                    Sizin için iş ilanları
+                    {t('title')}
                 </Typography>
 
                 <Grid container spacing={4}>
                     {/* Popüler Kategoriler */}
                     <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                         <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 2, fontWeight: 'bold', fontSize: '20px' }}>
-                            Popüler Kategoriler
+                            {t('categories')}
                         </Typography>
                         <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
                             {jobCategories.map((item, index) => (
@@ -100,7 +104,7 @@ export default function JobsForYou() {
 
                     <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                         <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 2, fontWeight: 'bold', fontSize: '20px' }}>
-                            Popüler Başlıklar
+                            {t('titles')}
                         </Typography>
                         <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
                             {popularTitles.map((item, index) => (
@@ -117,7 +121,7 @@ export default function JobsForYou() {
 
                     <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                         <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 2, fontWeight: 'bold', fontSize: '20px' }}>
-                            Popüler Lokasyonlar
+                            {t('locations')}
                         </Typography>
                         <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
                             {popularLocations.map((item, index) => (
@@ -134,7 +138,7 @@ export default function JobsForYou() {
 
                     <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                         <Typography variant="subtitle1" color="text.secondary" sx={{ mb: 2, fontWeight: 'bold', fontSize: '20px' }}>
-                            Popüler Şirket İlanları
+                            {t('companies')}
                         </Typography>
                         <Box component="ul" sx={{ listStyle: 'none', p: 0, m: 0 }}>
                             {popularCompanies.map((item, index) => (

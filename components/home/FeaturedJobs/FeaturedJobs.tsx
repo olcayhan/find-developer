@@ -102,7 +102,10 @@ function PrevArrow(props: any) {
     );
 }
 
+import { useTranslations } from 'next-intl';
+
 export default function FeaturedJobs() {
+    const t = useTranslations('FeaturedJobs');
     const settings = {
         dots: false,
         infinite: true,
@@ -137,7 +140,7 @@ export default function FeaturedJobs() {
         <Box sx={{ py: { xs: 4, sm: 6 }, bgcolor: '#f9f9f9-white' }}>
             <Container maxWidth="lg">
                 <Typography variant="h6" gutterBottom color="textHook" sx={{ mb: 3, ml: 1, fontSize: { xs: '1.25rem', md: '1.5rem' }, color: 'text.secondary' }}>
-                    Öne çıkan iş ilanları
+                    {t('title')}
                 </Typography>
                 <Box
                     sx={{

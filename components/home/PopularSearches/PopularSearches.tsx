@@ -6,16 +6,18 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Chip from '@mui/material/Chip';
 import { useRouter } from 'next/navigation';
+import { useTranslations } from 'next-intl';
 
 export default function PopularSearches() {
     const router = useRouter();
+    const t = useTranslations('PopularSearches');
     const popularSearches = ['UX designer', 'UI designer', 'Front-end developer', 'Back-end developer', 'iOS developer', 'Android Developer', 'React Native'];
 
     return (
         <Box sx={{ position: 'relative', bgcolor: '#f5f5f5', py: 2, width: '100%', borderBottom: '1px solid #e0e0e0' }}>
             <Container maxWidth="lg" sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, alignItems: { xs: 'flex-start', md: 'center' }, gap: { xs: 1, md: 2 } }}>
                 <Typography variant="body1" sx={{ color: 'text.secondary', whiteSpace: 'nowrap', mb: { xs: 1, md: 0 } }}>
-                    Popüler aramalar
+                    {t('title')}
                 </Typography>
                 <Box
                     sx={{

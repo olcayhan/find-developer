@@ -13,11 +13,10 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import Link from 'next/link';
+import { Link, usePathname } from '../../../navigation';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Container from '@mui/material/Container';
-import { usePathname } from 'next/navigation';
 
 export default function Header() {
     const [mobileOpen, setMobileOpen] = useState(false);
