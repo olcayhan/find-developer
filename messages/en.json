@@ -41,6 +41,8 @@
         "addDocument": "Add another document",
         "savedSearches": "Saved Searches",
         "applications": "Applications",
-        "viewAll": "View All"
+        "viewAll": "View All",
+        "founderAt": "Founder at findtalent",
+        "find": "find"
     }
 }

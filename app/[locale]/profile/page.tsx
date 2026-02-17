@@ -11,9 +11,8 @@ import ExperienceSection from '../../../components/profile/ExperienceSection/Exp
 import SkillsSection from '../../../components/profile/SkillsSection/SkillsSection';
 import EducationSection from '../../../components/profile/EducationSection/EducationSection';
 import InterestsSection from '../../../components/profile/InterestsSection/InterestsSection';
+import Divider from '@mui/material/Divider';
 
-// Mock data
-// In a real app we would fetch this or use Redux
 const user = {
     "name": "Nesil AKSOY",
     "title": "UX Designer",
@@ -91,6 +90,7 @@ export default function ProfilePage() {
                                 <Typography variant="h6" fontWeight="bold" color="primary">Profesyonel Bakış</Typography>
                                 <Button size="small" sx={{ textTransform: 'none', color: 'text.secondary' }}>Düzenle</Button>
                             </Box>
+                            <Divider sx={{ mb: 2 }} />
                             <Typography variant="body2" color="text.secondary">
                                 {user.professionalView}
                             </Typography>
@@ -105,6 +105,7 @@ export default function ProfilePage() {
                                 <Typography variant="subtitle1" fontWeight="bold" color="primary">MCP (Microsoft Certified Professional)</Typography>
                                 <Button size="small" sx={{ textTransform: 'none', color: 'text.secondary' }}>Düzenle</Button>
                             </Box>
+                            <Divider sx={{ mb: 2 }} />
                             <Typography variant="body2" color="text.secondary">Microsoft</Typography>
                             <Typography variant="caption" color="text.secondary">January 2015</Typography>
                         </Box>

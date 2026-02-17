@@ -4,6 +4,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
+import Divider from '@mui/material/Divider';
 
 interface Experience {
     title: string;
@@ -21,6 +22,7 @@ export default function ExperienceSection({ experiences }: { experiences: Experi
                 <Typography variant="h6" fontWeight="bold" color="text.secondary">Deneyim</Typography>
                 <Button size="small" sx={{ textTransform: 'none', color: 'text.secondary' }}>Düzenle</Button>
             </Box>
+            <Divider sx={{ mb: 2 }} />
 
             {experiences.map((exp, idx) => (
                 <Box key={idx} sx={{ mb: 3 }}>

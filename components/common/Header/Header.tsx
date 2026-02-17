@@ -14,16 +14,25 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { Link, usePathname } from '../../../navigation';
+import { useTranslations } from 'next-intl';
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Container from '@mui/material/Container';
+import Avatar from '@mui/material/Avatar';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import SearchIcon from '@mui/icons-material/Search';
 
 export default function Header() {
+    const t = useTranslations('Hero');
+    const tProfile = useTranslations('Profile');
     const [mobileOpen, setMobileOpen] = useState(false);
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const pathname = usePathname();
     const isHome = pathname === '/';
+    const isProfile = pathname.includes('/profile');
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -51,6 +60,78 @@ export default function Header() {
         </Box>
     );
 
+
+    if (isProfile) {
+        return (
+            <Box sx={{ flexDirection: 'column', width: '100%' }}>
+                <Box sx={{ bgcolor: '#4361ee', position: 'relative', height: '80px', display: 'flex', alignItems: 'center', overflow: 'hidden' }}>
+                    <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+                            <Box
+                                component="img"
+                                src="/assets/images/logo.webp"
+                                alt="Logo"
+                                width={190}
+                                height={26}
+                            />
+                        </Link>
+
+                        <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                            <Box sx={{ textAlign: 'right', color: 'white' }}>
+                                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: 0.5 }}>
+                                    <Typography variant="body2" fontWeight="bold">Eray Karakullukçu</Typography>
+                                    <KeyboardArrowDownIcon fontSize="small" />
+                                </Box>
+                                <Typography variant="caption" sx={{ opacity: 0.8 }}>{tProfile('founderAt')}</Typography>
+                            </Box>
+                            <Avatar src="https://i.pravatar.cc/150?u=5" sx={{ width: 48, height: 48, border: '2px solid white' }} />
+                        </Box>
+                    </Container>
+                </Box>
+
+                <Box sx={{ bgcolor: '#f5f7fa', py: 2, borderBottom: '1px solid #e0e0e0' }}>
+                    <Container maxWidth="lg" sx={{ display: 'flex', gap: 2 }}>
+                        <Paper
+                            component="form"
+                            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', flexGrow: 1, borderRadius: '30px', border: '1px solid #4361ee', boxShadow: 'none', height: 50 }}
+                        >
+                            <IconButton sx={{ p: '10px', color: '#666' }} aria-label="search">
+                                <SearchIcon />
+                            </IconButton>
+                            <InputBase
+                                sx={{ ml: 1, flex: 1, color: '#666' }}
+                                placeholder={t('placeholder')}
+                                inputProps={{ 'aria-label': 'search jobs' }}
+                            />
+                        </Paper>
+                        <Button
+                            variant="outlined"
+                            sx={{
+                                borderRadius: '30px',
+                                px: 5,
+                                borderColor: '#4361ee',
+                                color: '#4361ee',
+                                textTransform: 'none',
+                                fontSize: '1.2rem',
+                                fontWeight: 'bold',
+                                bgcolor: 'white',
+                                '&:hover': { bgcolor: '#f0f4ff', borderColor: '#4361ee' }
+                            }}
+                        >
+                            <Box
+                                component="img"
+                                src="/assets/images/find-text.webp"
+                                alt="Logo"
+                                width={60}
+                                height={25}
+                            />
+                        </Button>
+                    </Container>
+                </Box>
+            </Box>
+        );
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar
@@ -65,18 +146,18 @@ export default function Header() {
             >
                 <Container maxWidth="lg">
                     <Toolbar disableGutters>
-                        {!isHome ? (
-                            <Typography
-                                variant="h6"
-                                component={Link}
-                                href="/"
-                                sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'primary.main', fontWeight: 'bold', fontSize: '1.5rem' }}
-                            >
-                                find<Box component="span" sx={{ color: '#556cd6' }}>developer.net</Box>
-                            </Typography>
-                        ) : (
-                            <Box sx={{ flexGrow: 1 }} />
-                        )}
+                        <Box sx={{ flexGrow: 1 }}>
+                            {!isHome && (
+                                <Typography
+                                    variant="h6"
+                                    component={Link}
+                                    href="/"
+                                    sx={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'primary.main', fontWeight: 'bold', fontSize: '1.5rem' }}
+                                >
+                                    find<Box component="span" sx={{ color: '#556cd6' }}>developer.net</Box>
+                                </Typography>
+                            )}
+                        </Box>
 
                         {isMobile ? (
                             <IconButton
@@ -100,7 +181,6 @@ export default function Header() {
                                             borderRadius: '20px',
                                             textTransform: 'none',
                                             px: 3,
-                                            // On home, make it white text and border
                                             color: isHome ? 'white' : 'primary.main',
                                             borderColor: isHome ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.12)',
                                             bgcolor: 'transparent',
@@ -109,7 +189,6 @@ export default function Header() {
                                                 borderColor: isHome ? 'white' : undefined,
                                             }
                                         }}
-                                    // Override color prop to avoid conflict/defaults
                                     >
                                         {item.label}
                                     </Button>
@@ -125,7 +204,7 @@ export default function Header() {
                     open={mobileOpen}
                     onClose={handleDrawerToggle}
                     ModalProps={{
-                        keepMounted: true, // Better open performance on mobile.
+                        keepMounted: true,
                     }}
                     sx={{
                         display: { xs: 'block', md: 'none' },
