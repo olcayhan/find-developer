@@ -31,5 +31,16 @@
         "aboutUs": "About Us",
         "helpCenter": "Help Center",
         "legalText": "Finddeveloper.net Inc. operates as a Private Employment Agency with license number 170 granted by the Turkish Employment Agency on 17.02.2024, valid between 31/08/2024-30/08/2027. No fees or benefits shall be demanded from job seekers pursuant to Law No. 4904."
+    },
+    "Profile": {
+        "downloadCV": "Download Find CV",
+        "editProfile": "Edit Profile",
+        "website": "Website",
+        "edit": "Edit",
+        "documents": "Documents",
+        "addDocument": "Add another document",
+        "savedSearches": "Saved Searches",
+        "applications": "Applications",
+        "viewAll": "View All"
     }
 }
